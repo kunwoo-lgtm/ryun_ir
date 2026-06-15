@@ -217,7 +217,7 @@ section {
 
 .track-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   border: 0.5px solid rgba(200,184,154,0.2);
 }
@@ -225,11 +225,10 @@ section {
 .track-item {
   padding: 32px 24px;
   border-right: 0.5px solid rgba(200,184,154,0.12);
-  border-bottom: 0.5px solid rgba(200,184,154,0.12);
+  border-bottom: none;
 }
 
-.track-item:nth-child(4n) { border-right: none; }
-.track-item:nth-last-child(-n+4) { border-bottom: none; }
+.track-item:nth-child(3n) { border-right: none; }
 
 .track-num {
   font-family: 'Noto Serif KR', serif;
@@ -714,10 +713,9 @@ footer span {
 
   section { padding: 60px 20px; }
 
-  .track-grid { grid-template-columns: repeat(2, 1fr); }
-  .track-item:nth-child(2n) { border-right: none; }
-  .track-item:nth-last-child(-n+2) { border-bottom: none; }
-  .track-item:nth-last-child(-n+4) { border-bottom: 0.5px solid rgba(200,184,154,0.12); }
+  .track-grid { grid-template-columns: repeat(1, 1fr); }
+  .track-item { border-right: none; border-bottom: 0.5px solid rgba(200,184,154,0.12); }
+  .track-item:last-child { border-bottom: none; }
 
   .bio-evidence { grid-template-columns: 1fr; }
   .bio-ev-item { border-right: none; border-bottom: 0.5px solid rgba(74,103,65,0.3); }
@@ -803,22 +801,16 @@ footer span {
       <div class="track-sub">잠든 골목이 되살아났고, 매매가는 3.5배 따라왔다</div>
     </div>
     <div class="track-item">
-      <div class="track-num">2.5억</div>
-      <div class="track-num-note">연 매출 실증</div>
-      <div class="track-label">RYUN PLACE 현재 운영 중</div>
-      <div class="track-sub">카페 · 코워크 · 레지던시</div>
-    </div>
-    <div class="track-item">
       <div class="track-num">7개</div>
       <div class="track-num-note">공공 인증 보유</div>
       <div class="track-label">국토부 · 중기부 · LH<br>도시재생 인증</div>
       <div class="track-sub">모두의창업 1라운드 선정</div>
     </div>
     <div class="track-item">
-      <div class="track-num">13인</div>
-      <div class="track-num-note">기존 주주 / 3억 출자</div>
-      <div class="track-label">사전 검증된 투자 신뢰</div>
-      <div class="track-sub">Series A 5~10억 추가 모집 중</div>
+      <div class="track-num">176평</div>
+      <div class="track-num-note">법인 직접 보유 토지</div>
+      <div class="track-label">부산 오륜동<br>1종 일반주거지역</div>
+      <div class="track-sub">하드에셋이 사업의 바닥을 지킨다</div>
     </div>
   </div>
 </section>
