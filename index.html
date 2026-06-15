@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RYUN SST — Investor Relations</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --card: #1a1a1a;
+      --border: #2a2a2a;
+      --accent: #c9a84c;
+      --accent2: #7eb8a4;
+      --text: #e8e4dc;
+      --muted: #888;
+      --font: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 48px 80px;
+      background: radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      max-width: 800px;
+      margin-bottom: 28px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+
+    /* ── KPI STRIP ── */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+    .kpi {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+    }
+    .kpi:last-child { border-right: none; }
+    .kpi-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 48px; border-bottom: 1px solid var(--border); }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      max-width: 640px;
+    }
+
+    /* ── PROJECT CARDS ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .project-card {
+      background: var(--card);
+      padding: 40px;
+    }
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .project-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .project-tag {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 4px 12px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    /* ── FINANCIALS TABLE ── */
+    .fin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .fin-table th {
+      text-align: left;
+      padding: 16px 20px;
+      background: var(--card);
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+    .fin-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .fin-table tr:last-child td { border-bottom: none; }
+    .fin-table .val { color: var(--accent); font-weight: 700; }
+    .fin-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* ── SERIES ── */
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .series-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 36px;
+      border-radius: 4px;
+      position: relative;
+    }
+    .series-card.active {
+      border-color: var(--accent);
+    }
+    .series-badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .series-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .series-card ul {
+      list-style: none;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+    .series-card ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .series-card ul li:last-child { border-bottom: none; }
+    .series-card ul li::before {
+      content: '—  ';
+      color: var(--accent);
+    }
+    .now-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      padding: 4px 10px;
+      background: var(--accent);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      font-size: 0.875rem;
+    }
+    .contact-row .label { color: var(--muted); min-width: 80px; }
+    .contact-row a { color: var(--accent); text-decoration: none; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form input,
+    .contact-form textarea {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 18px;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form button {
+      padding: 14px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .contact-form button:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-logo { color: var(--accent); font-weight: 700; letter-spacing: 0.15em; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 64px 24px; }
+      .project-grid, .series-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RYUN</div>
+  <ul class="nav-links">
+    <li><a href="#about">개요</a></li>
+    <li><a href="#projects">사업 구성</a></li>
+    <li><a href="#financials">재무</a></li>
+    <li><a href="#series">투자 단계</a></li>
+    <li><a href="#contact">문의</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <p class="hero-label">Investor Relations · Series A</p>
+  <h1>예술, 기술, 생태가<br/>융합된 <span>복합문화공간</span></h1>
+  <p>RYUN SST는 유휴 공간을 문화 콘텐츠 및 체류형 관광 자산으로 전환하며,<br/>
+     수익성과 사회적 가치를 동시에 실현하는 소셜디벨로퍼 모델입니다.</p>
+  <a class="hero-cta" href="#contact">투자 문의하기</a>
+</section>
+
+<!-- KPI -->
+<div class="kpi-strip">
+  <div class="kpi">
+    <div class="kpi-value">19.2억</div>
+    <div class="kpi-label">총 투자금</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">2.7억</div>
+    <div class="kpi-label">연간 수익 (예상)</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">7년</div>
+    <div class="kpi-label">투자 회수기간</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">162.7%</div>
+    <div class="kpi-label">ROI (매각 기준)</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">사업 구성</p>
+  <h2 class="section-title">세 가지 핵심 사업 구조</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <div class="project-icon">🏡</div>
+      <h3>RYUN STAY</h3>
+      <p>레지던시 · 단기스테이 · 임대 상가로 구성된 체류형 공간 사업. A동(임대 기반 수익형 상가) + B동(자체 운영형 프리미엄 레지던시)으로 구성되어 안정적인 임대 수익과 직접 운영 수익을 이중으로 확보합니다.</p>
+      <span class="project-tag">운영 중</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🌿</div>
+      <h3>RYUN FARM</h3>
+      <p>8,000평 규모의 팜파크. 치유농업과 콘텐츠를 결합한 체험 공간으로, 관광객·창작자·커뮤니티가 교차하는 설계로 구성됩니다. 현재 운영 중인 RYUN PLACE(연 매출 2.5억)와 연계됩니다.</p>
+      <span class="project-tag">기획 중</span>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">☀️</div>
+      <h3>RYUN ENERGY</h3>
+      <p>공유수면 플로팅 태양광 발전소. 연간 4,161 MWh 발전 규모. IRR 36.91%의 고수익 재생에너지 자산으로, 사업 전체의 안정적인 현금흐름 기반을 제공합니다.</p>
+      <span class="project-tag">IRR 36.91%</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIALS -->
+<section id="financials">
+  <p class="section-label">재무 요약</p>
+  <h2 class="section-title">명확한 수익 구조와<br/>검증된 현금흐름</h2>
+  <table class="fin-table">
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>수치</th>
+        <th>비고</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>총 투자금</td>
+        <td class="val">19.2억원</td>
+        <td>A·B동 합산</td>
+      </tr>
+      <tr>
+        <td>연간 예상 수익</td>
+        <td class="val">약 2.7억원</td>
+        <td>임대 + 운영 수익</td>
+      </tr>
+      <tr>
+        <td>투자 회수기간</td>
+        <td class="val">7년 이내</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>ROI (보유 기준)</td>
+        <td class="val">141.75%</td>
+        <td>장기 보유 시나리오</td>
+      </tr>
+      <tr>
+        <td>ROI (매각 기준)</td>
+        <td class="val">162.7%</td>
+        <td>Exit 시나리오</td>
+      </tr>
+      <tr>
+        <td>IRR (매각 기준)</td>
+        <td class="val">14.3%</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>태양광 IRR</td>
+        <td class="val">36.91%</td>
+        <td>RYUN ENERGY 단독</td>
+      </tr>
+      <tr>
+        <td>현재 운영 매출</td>
+        <td class="val">연 2.5억</td>
+        <td>RYUN PLACE (실운영)</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SERIES -->
+<section id="series">
+  <p class="section-label">투자 단계</p>
+  <h2 class="section-title">명확하게 설계된<br/>시리즈 로드맵</h2>
+  <div class="series-grid">
+    <div class="series-card active">
+      <span class="now-badge">모집 중</span>
+      <div class="series-badge">Series A</div>
+      <h3>초기 개발 · 운영</h3>
+      <ul>
+        <li>A·B동 개발 및 운영 개시</li>
+        <li>RYUN FARM 1단계 조성</li>
+        <li>태양광 발전소 인허가</li>
+        <li>임팩트 기관 파트너십 구축</li>
+      </ul>
+    </div>
+    <div class="series-card">
+      <div class="series-badge">Series B</div>
+      <h3>확장 · 재생에너지</h3>
+      <ul>
+        <li>플로팅 태양광 발전소 가동</li>
+        <li>RYUN FARM 풀 오픈</li>
+        <li>콘텐츠 플랫폼화</li>
+        <li>전국 거점 확대 시작</li>
+      </ul>
+    </div>
+    <div class="series-card">
+      <div class="series-badge">Series C</div>
+      <h3>글로벌 · Exit</h3>
+      <ul>
+        <li>일본 진출 계획 실행</li>
+        <li>전국 프랜차이즈 모델</li>
+        <li>자산 매각 또는 상장 검토</li>
+        <li>임팩트 지표 공시</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">투자 문의</p>
+  <h2 class="section-title">함께 만들어갈<br/>파트너를 찾습니다</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>초기 시리즈 A 라운드에서 임팩트 기관 및 공동 운영파트너를 모집합니다. 상세 IR 자료 요청 및 미팅 제안은 아래로 연락주세요.</p>
+      <div class="contact-detail">
+        <div class="contact-row">
+          <span class="label">이메일</span>
+          <a href="mailto:kunwoo@funnyrevenge.com">kunwoo@funnyrevenge.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">법인명</span>
+          <span>재미난복수 / RYUN SST</span>
+        </div>
+        <div class="contact-row">
+          <span class="label">소재지</span>
+          <span>부산 금정구 · 경북 영덕</span>
+        </div>
+        <div class="contact-row">
+          <span class="label">현재 단계</span>
+          <span style="color:var(--accent)">Series A 모집 중</span>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="성함 / 기관명" required />
+      <input type="email" placeholder="이메일" required />
+      <textarea placeholder="문의 내용 (IR 자료 요청, 미팅 제안 등)"></textarea>
+      <button type="submit">문의 보내기</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">RYUN SST</span>
+  <span>© 2025 재미난복수. All rights reserved.</span>
+  <span>Sustainable Smart Town · 부산 금정구</span>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '전송 완료 ✓';
+    btn.style.background = '#7eb8a4';
+    btn.disabled = true;
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
