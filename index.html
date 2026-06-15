@@ -1018,10 +1018,10 @@ footer span {
         <span class="contact-link-value">륜플레이스</span>
       </div>
     </div>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="성함 / 기관명" required>
-      <input type="email" placeholder="이메일" required>
-      <textarea placeholder="문의 내용 (IR 자료 요청, 바이오 리트릿 체험, 미팅 제안 등)"></textarea>
+    <form class="contact-form" action="https://formspree.io/f/xykaowbd" method="POST">
+      <input type="text" name="name" placeholder="성함 / 기관명" required>
+      <input type="email" name="email" placeholder="이메일" required>
+      <textarea name="message" placeholder="문의 내용 (IR 자료 요청, 미팅 제안 등)"></textarea>
       <button type="submit">문의 보내기</button>
     </form>
   </div>
