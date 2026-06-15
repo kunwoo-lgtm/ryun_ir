@@ -526,6 +526,66 @@ section {
   border-bottom: none;
 }
 
+/* ── EXIT RATIONALE ── */
+.exit-rationale {
+  margin-top: 48px;
+  border-top: 0.5px solid rgba(200,184,154,0.4);
+  padding-top: 36px;
+}
+
+.exit-rationale-title {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.exit-rationale-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.exit-rationale-item {
+  padding: 20px 24px;
+  background: var(--linen);
+  border-left: 2px solid var(--moss);
+}
+
+.exit-rationale-item strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.exit-rationale-item span {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.exit-rationale-conclusion {
+  padding: 24px 28px;
+  background: var(--forest);
+  color: var(--linen);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.exit-rationale-conclusion em {
+  font-style: normal;
+  color: var(--earth);
+  font-family: 'Noto Serif KR', serif;
+}
+
+@media (max-width: 860px) {
+  .exit-rationale-grid { grid-template-columns: 1fr; }
+}
+
 /* ── SERIES ── */
 #series { background: var(--forest); }
 
@@ -965,6 +1025,31 @@ footer span {
       </tr>
     </tbody>
   </table>
+
+  <div class="exit-rationale">
+    <p class="exit-rationale-title">Exit 근거 — 왜 35~50억이 설득력 있는가</p>
+    <div class="exit-rationale-grid">
+      <div class="exit-rationale-item">
+        <strong>부산 북부권 관광 재편</strong>
+        <span>2025~2028 금정구·기장·북구 생태관광 벨트 조성. 부산시 그린투어리즘 계획 추진으로 인접 자산 희소성 상승.</span>
+      </div>
+      <div class="exit-rationale-item">
+        <strong>땅뫼산 생태공원화</strong>
+        <span>부산시 직접 소유 + 공원화 사업 진행 중. 입구 인접 콘텐츠 시설의 위치 독점성이 자산 가치에 반영.</span>
+      </div>
+      <div class="exit-rationale-item">
+        <strong>리트릿 시장 성장</strong>
+        <span>국내 기업 리트릿 시장 연 12~18% 성장 예측 (2023~2028, 글로벌 웰니스 이코노미 리포트). 공급 부재 시장에서 선점 효과.</span>
+      </div>
+      <div class="exit-rationale-item">
+        <strong>센텀~오륜동 20분</strong>
+        <span>부산 동부 경제권 법인 직접 접근. 부산역·김해공항 당일 이동 가능. B2B 타겟 기업군과의 물리적 접점 확보.</span>
+      </div>
+    </div>
+    <div class="exit-rationale-conclusion">
+      단순 시설 매각이 아닌 <em>"부산 북부 리트릿 거점 플랫폼"</em>으로 포지셔닝. 호텔체인·웰니스 브랜드·패밀리오피스의 부산 거점 수요와 연결 시, 전략적 매수자 기준 <em>47억 이상</em> 가능.
+    </div>
+  </div>
 </section>
 
 <!-- SERIES -->
