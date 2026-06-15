@@ -155,7 +155,7 @@ nav {
 /* ── KPI STRIP ── */
 .kpi-strip {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background: var(--ink);
   border-bottom: 0.5px solid rgba(200,184,154,0.15);
 }
@@ -708,7 +708,8 @@ footer span {
   .hero-sub { font-size: 12px; }
 
   .kpi-strip { grid-template-columns: repeat(2, 1fr); }
-  .kpi:nth-child(2) { border-right: none; }
+  .kpi:nth-child(2),
+  .kpi:nth-child(4) { border-right: none; }
   .kpi { padding: 28px 20px; }
 
   section { padding: 60px 20px; }
@@ -763,7 +764,7 @@ footer span {
   </div>
   <div class="hero-body">
     <div class="hero-kanji" aria-hidden="true">輪</div>
-    <h1 class="hero-title">생태, 예술, 기술이<br>만나는 <em>복합 문화공간</em></h1>
+    <h1 class="hero-title">생태, 예술, 기술이<br>만나는 <em>복합문화공간</em></h1>
     <p class="hero-sub">RYUN SST는 유휴 공간을 문화 콘텐츠·체류형 관광·바이오 리트릿 자산으로 전환하며,<br>수익성과 사회적 가치를 동시에 실현하는 소셜디벨로퍼 모델입니다.</p>
     <a class="hero-cta" href="#contact">투자 문의하기 →</a>
   </div>
@@ -783,10 +784,6 @@ footer span {
     <div class="kpi-value">162.7%</div>
     <div class="kpi-label">ROI — 매각 기준</div>
   </div>
-  <div class="kpi">
-    <div class="kpi-value">36.91%</div>
-    <div class="kpi-label">태양광 IRR</div>
-  </div>
   <div class="kpi kpi-highlight">
     <div class="kpi-value">+38%</div>
     <div class="kpi-label">HRV 상승<br>4시간 실측</div>
@@ -800,10 +797,10 @@ footer span {
 
   <div class="track-grid">
     <div class="track-item">
-      <div class="track-num">0%</div>
-      <div class="track-num-note">공실률 — 90%에서</div>
+      <div class="track-num">100%</div>
+      <div class="track-num-note">공간 활성화 — 10%에서</div>
       <div class="track-label">장성시장 재생 프로젝트</div>
-      <div class="track-sub">매매가 3.5배 상승 동반</div>
+      <div class="track-sub">잠든 골목이 되살아났고, 매매가는 3.5배 따라왔다</div>
     </div>
     <div class="track-item">
       <div class="track-num">2.5억</div>
@@ -850,15 +847,6 @@ footer span {
     </div>
     <div class="project-result">8,000평 규모 팜파크 — 치유농업 + 콘텐츠</div>
     <p class="project-desc">관광객·창작자·커뮤니티가 교차하는 복합 체험 공간. 지역 생태계를 콘텐츠 자산으로 전환하는 플랫폼으로 설계되었습니다.</p>
-  </div>
-
-  <div class="project-card">
-    <div class="project-header">
-      <span class="project-name">RYUN ENERGY</span>
-      <span class="project-badge">IRR 36.91%</span>
-    </div>
-    <div class="project-result">공유수면 플로팅 태양광 — 연 4,161 MWh</div>
-    <p class="project-desc">재생에너지 자산으로 사업 전체의 안정적인 현금흐름 기반을 제공합니다. 태양광 단독 IRR 36.91%, 전체 사업의 리스크 헤지 역할을 합니다.</p>
   </div>
 
   <!-- 바이오 리트릿 특별 카드 -->
@@ -926,11 +914,6 @@ footer span {
     </div>
   </div>
 
-  <div class="fund-banner">
-    <span class="fund-banner-label">연계 펀드 규모</span>
-    <span class="fund-banner-val">2,000억</span>
-    <span class="fund-banner-note">부산혁신스케일업 벤처펀드 (Cunesty GP)</span>
-  </div>
 </section>
 
 <!-- FINANCIALS -->
@@ -968,11 +951,6 @@ footer span {
         <td>IRR (매각 기준)</td>
         <td><span class="val">14.3%</span></td>
         <td class="note">회수 7년 이내</td>
-      </tr>
-      <tr>
-        <td>태양광 IRR</td>
-        <td><span class="val">36.91%</span></td>
-        <td class="note">RYUN ENERGY 단독 / 연 4,161 MWh</td>
       </tr>
       <tr>
         <td>현재 운영 매출</td>
@@ -1036,7 +1014,6 @@ footer span {
       <h3>확장 · 재생에너지</h3>
       <ul>
         <li>바이오 리트릿 신축 (176평)</li>
-        <li>플로팅 태양광 발전소 가동</li>
         <li>BioPassport 앱 출시</li>
         <li>RYUN FARM 풀 오픈</li>
         <li>전국 거점 확대</li>
