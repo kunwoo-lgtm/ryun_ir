@@ -112,4 +112,29 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   console.log("누적 수령액:");
   for (const p of ledger.partners) console.log(`  ${p.id}: ${won(p.paidTotal)}`);
+
+  // ----------------------------------------------------------------
+  // 연간 시나리오: 연매출 100억 → 순수익(분배 재원) 50억
+  // ----------------------------------------------------------------
+  const eok = (n) => (n / 100_000_000).toLocaleString("ko-KR", { maximumFractionDigits: 2 }) + "억 원";
+  const EOK = 100_000_000;
+
+  console.log("\n" + "=".repeat(60));
+  console.log("연간 정산 시나리오 — 연매출 100억, 순수익 50억 (분배 재원)");
+  const annual = createLedger(
+    [
+      { id: "아티스트A", guarantee: 5 * EOK, weight: 3 },
+      { id: "아티스트B", guarantee: 3 * EOK, weight: 2 },
+      { id: "기획/운영",  guarantee: 2 * EOK, weight: 5 },
+    ],
+    { feeBps: 300 } // 플랫폼 수수료 3%
+  );
+  const rec = settle(annual, 50 * EOK);
+  console.log(`분배 재원 ${eok(50 * EOK)}, 수수료 ${eok(rec.fee)}\n`);
+  for (const p of annual.partners) {
+    const r = rec.payouts[p.id];
+    console.log(
+      `  ${p.id}: 게런티 ${eok(r.guarantee)} + 초과분배 ${eok(r.surplus)} = ${eok(p.paidTotal)}`
+    );
+  }
 }
